@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>GST Calculator</h1>
+    <form id="gstForm">
+        <label for="amount">Amount:</label>
+        <input type="number" id="amount" name="amount" required>
+        <br><br>
+        <label for="gstRate">GST Rate (%):</label>
+        <input type="number" id="gstRate" name="gstRate" required>
+        <br><br>
+        <button type="submit">Calculate GST</button>
+        <script>
+            document.getElementById('gstForm').addEventListener('submit', function(event) {
+                event.preventDefault();
+                
+                const amount = parseFloat(document.getElementById('amount').value);
+                const gstRate = parseFloat(document.getElementById('gstRate').value);
+                
+            
+                const gstAmount = (amount * gstRate) / 100;
+                const totalAmount = amount + gstAmount;
+                
+                alert(`GST Amount: ${gstAmount.toFixed(2)}\nTotal Amount: ${totalAmount.toFixed(2)}`);
+            });
+        </script>
+</body>
+</html>

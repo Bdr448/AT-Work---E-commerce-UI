@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #productContainer{
+            display:flex;
+            flex-wrap:wrap;
+        }
+    </style>
+   
+</head>
+<body>
+    <h1 align="center">Our Products</h1>
+    <div id="productContainer" class="containers"></div>
+ <script>
+
+var products=[
+    {productname:"Laptop",price:50000,brand:"HP",image:"apple.png"},
+    {productname:"Mobile",price:25000,brand:"Samsung",image:"apple2.png"},
+    {productname:"Tablet",price:30000,brand:"Apple",image:"apple3.png"},
+    {productname:"Headphones",price:5000,brand:"Boat",image:"apple.png"},
+    {productname:"Smartwatch",price:15000,brand:"Boat",image:"apple2.png"},
+    {productname:"Camera",price:45000,brand:"Canon",image:"apple3.png"},
+    {productname:"Laptop",price:50000,brand:"HP",image:"apple.png"},
+    {productname:"Mobile",price:25000,brand:"Samsung",image:"apple2.png"},
+    {productname:"Tablet",price:30000,brand:"Apple",image:"apple3.png"},
+]
+var container=document.getElementById("productContainer");
+for(i in products){
+    container.innerHTML+="<div style='border:1px solid black; padding:10px; margin:10px;'><img src='"+products[i].image+"' style='width:150px;  object-fit:cover;'><h3>"+products[i].productname+"</h3><p>Brand: "+products[i].brand+"</p><p>Price: ₹"+products[i].price+"</p></div>";
+}
+
+
+    </script>
+    
+    
+    
+</body>
+</html>

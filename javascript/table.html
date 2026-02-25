@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table</title>
+</head>
+<body>
+    <table border="1">
+        <script>
+            for(var i=1;i<=100;i++){
+                var color;
+                if(i%2==0){
+                    color='red';
+                }else{
+                    color='yellow';
+                }
+                if((i-1)%10==0){
+                    document.write("<tr>");
+                }
+                document.write("<td style='background:"+color+"'>"+i+"</td>");
+                if(i%10==0){
+                    document.write("</tr>");
+                }
+            }
+        </script>
+    </table>
+</body>
+</html>

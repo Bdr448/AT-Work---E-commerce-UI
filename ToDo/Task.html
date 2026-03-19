@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToDo App</title>
+</head>
+<body>
+    <h1>ToDo List</h1>
+    <input type="text" id="taskInput" placeholder="Enter task">
+    <input type="button" onclick="addTask()" value="Add">
+    <table id="taskTable" border="1"></table>
+    
+    <script>   
+        var tasks;
+        if(localStorage.getItem('tasks')){
+            tasks = localStorage.getItem('tasks');
+        }else{
+            tasks = '';
+        }
+    
+        displayTasks();
+        
+        function addTask(){
+            var input = document.getElementById('taskInput').value;
+            if(input){
+                if(tasks){
+                    tasks = tasks + '|' + input;
+                }else{
+                    tasks = input;
+                }
+                localStorage.setItem('tasks', tasks);
+                document.getElementById('taskInput').value = '';
+                displayTasks();
+            }
+        }
+        
+        function editTask(index){
+            var taskArray = tasks.split('|');
+            var newTask = prompt('Edit task:', taskArray[index]);
+            if(newTask){
+                var newTasks = '';
+                for(var i = 0; i < taskArray.length; i++){
+                    if(i == index){
+                        if(newTasks){
+                            newTasks = newTasks + '|' + newTask;
+                        }else{
+                            newTasks = newTask;
+                        }
+                    }else{
+                        if(newTasks){
+                            newTasks = newTasks + '|' + taskArray[i];
+                        }else{
+                            newTasks = taskArray[i];
+                        }
+                    }
+                }
+                tasks = newTasks;
+                localStorage.setItem('tasks', tasks);
+                displayTasks();
+            }
+        }
+        
+        function deleteTask(index){
+            var taskArray = tasks.split('|');
+            var newTasks = '';
+            for(var i = 0; i < taskArray.length; i++){
+                if(i != index){
+                    if(newTasks){
+                        newTasks = newTasks + '|' + taskArray[i];
+                    }else{
+                        newTasks = taskArray[i];
+                    }
+                }
+            }
+            tasks = newTasks;
+            localStorage.setItem('tasks', tasks);
+            displayTasks();
+        }
+        
+        function displayTasks(){
+            var table = document.getElementById('taskTable');
+            table.innerHTML = '';
+            if(tasks){
+                var taskArray = tasks.split('|');
+                for(var i = 0; i < taskArray.length; i++){
+                    table.innerHTML += '<tr><td>' + taskArray[i] + '</td><td>' +
+                        '<input type="button" style="background-color:blue;color:white" onclick="editTask(' + i + ')" value="Edit">' +
+                        '<input type="button" style="background-color:red;color:white" onclick="deleteTask(' + i + ')" value="Delete">' +
+                        '</td></tr>';
+                }
+            }
+        }
+    </script>
+</body>
+</html>

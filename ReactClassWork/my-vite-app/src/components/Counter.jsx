@@ -13,8 +13,8 @@ class Counter extends React.Component {
   }
 
   incrementData() {
-    if (this.state.counter >= 5) {
-      this.setState({ msg: "Sorry>5" });
+    if (this.state.counter >= 10) {
+      this.setState({ msg: "Sorry, max is 10" });
     } else {
       const newVal = this.state.counter + 1;
       localStorage.setItem('counter', newVal);
@@ -24,7 +24,7 @@ class Counter extends React.Component {
 
   decrementData() {
     if (this.state.counter <= 0) {
-      this.setState({ msg: "Sorry<0" });
+      this.setState({ msg: "Sorry, min is 0" });
     } else {
       const newVal = this.state.counter - 1;
       localStorage.setItem('counter', newVal);
